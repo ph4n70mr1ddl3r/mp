@@ -1,0 +1,42 @@
+{
+  "name": "mp-tests",
+  "version": "1.0.0",
+  "description": "Test suite for MP (cryptographic messaging app)",
+  "private": true,
+  "scripts": {
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:unit:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:debug": "playwright test --debug",
+    "test:e2e:firefox": "playwright test --project=firefox",
+    "test:e2e:webkit": "playwright test --project=webkit",
+    "test:e2e:p0": "playwright test --grep '@P0'",
+    "test:e2e:p1": "playwright test --grep '@P0|@P1'",
+    "test:e2e:p2": "playwright test --grep '@P2'",
+    "test:e2e:auth": "playwright test authentication.spec.ts",
+    "test:e2e:messaging": "playwright test messaging.spec.ts",
+    "test:e2e:profile": "playwright test profile-management.spec.ts",
+    "test:e2e:presence": "playwright test presence-lobby.spec.ts",
+    "test:e2e:errors": "playwright test error-handling.spec.ts",
+    "test:e2e:nfr": "playwright test nfr-*.spec.ts",
+    "test:api": "playwright test tests/api",
+    "test:component": "playwright test tests/component",
+    "show-report": "playwright show-report",
+    "install:browsers": "playwright install",
+    "test:coverage": "playwright test --coverage"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@faker-js/faker": "^8.3.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
