@@ -7,7 +7,7 @@ frCount: 27
 nfrCount: 12
 epicDesignCompleted: true
 epicDesignDate: "2025-12-22"
-totalEpics: 5
+totalEpics: 4
 storyCreationCompleted: true
 storyCreationDate: "2025-12-22"
 totalStories: 25
@@ -73,7 +73,7 @@ NFR12: WCAG AA compliance for accessibility
 
 **From Architecture:**
 
-- Starter Template Required: Direct Slint Project Setup using `cargo new mp-desktop` - this impacts Epic 1 Story 1
+- Starter Template Required: Direct Slint Project Setup using `cargo new mp-desktop` - this is part of Epic 1 implementation (integrated into authentication stories)
 - Infrastructure Requirements: WSL/Linux backend deployment, SQLite database (MVP), PostgreSQL migration path
 - Integration Requirements: EdDSA signature algorithm (ed25519-dalek library), WebSocket communication (tokio-tungstenite), Axum backend framework with tokio runtime
 - Data Migration/Setup Requirements: SQLite database with users table (public_key as PRIMARY KEY, username, profile_name, created_at, last_seen) and messages table (id, sender_public_key, content, signature, timestamp)
@@ -122,31 +122,25 @@ FR27: Epic 4 - View cryptographic signature details
 
 ## Epic List
 
-### Epic 1: Project Infrastructure & Setup
-**Goal:** Establish the complete technical foundation for development and deployment
-**Value:** Development team has everything needed to build the application
-**Coverage:** Direct Slint project setup (Architecture requirement), database schema, API structure, cryptographic library integration
-**Stories:** 1 story (Project Initialization with Direct Slint Setup)
-
-### Epic 2: Cryptographic Authentication & Setup
+### Epic 1: Cryptographic Authentication & Setup
 **Goal:** Users can authenticate using their private key and gain secure access to the system
 **Value:** Zero-friction Web3-native identity without traditional account creation
 **Coverage:** FR1, FR2, FR3, FR4, FR5, FR6, FR7, FR8
 **Stories:** ~5-7 stories covering key input, validation, authentication flow, and private key management
 
-### Epic 3: Profile & Identity Management
+### Epic 2: Profile & Identity Management
 **Goal:** Users can create and manage their profile identity linked to their cryptographic key
 **Value:** Personal identity with cryptographic proof, user-friendly display names
 **Coverage:** FR9, FR10, FR11, FR12, FR13
 **Stories:** ~3-5 stories covering profile creation, username management, and database storage
 
-### Epic 4: Real-time Lobby & Presence
+### Epic 3: Real-time Lobby & Presence
 **Goal:** Users can join the live lobby and see who's currently online
 **Value:** Real-time community interaction and presence awareness
 **Coverage:** FR14, FR15, FR16, FR17
 **Stories:** ~4-6 stories covering lobby display, presence tracking, and real-time updates
 
-### Epic 5: Cryptographic Messaging & Verification
+### Epic 4: Cryptographic Messaging & Verification
 **Goal:** Users can send and receive cryptographically verified messages with complete trust
 **Value:** Tamper-proof, verifiable communication where every message is cryptographically guaranteed
 **Coverage:** FR18, FR19, FR20, FR21, FR22, FR23, FR24, FR25, FR26, FR27
@@ -154,34 +148,11 @@ FR27: Epic 4 - View cryptographic signature details
 
 <!-- Epic sections -->
 
-## Epic 1: Project Infrastructure & Setup
-
-Establish the complete technical foundation for development and deployment. Development team has everything needed to build the application.
-
-### Story 1.1: Initialize Rust Project with Slint Desktop Application
-
-As a development team,
-I want to initialize a Rust project with Slint framework for Windows desktop application,
-So that we have the foundation to build the cryptographic chat application.
-
-**Acceptance Criteria:**
-
-**Given** the project directory is clean and ready for initialization
-**When** we run the initialization command and set up the Slint dependencies
-**Then** a Rust project structure is created with Slint framework configured
-**And** the project compiles successfully on Windows
-**And** we have the basic Slint application window running
-
-**Given** the project structure is created
-**When** we verify the Cargo.toml includes Slint dependencies
-**Then** all necessary dependencies are properly configured
-**And** the build system is set up for cross-compilation to Windows
-
-## Epic 2: Cryptographic Authentication & Setup
+## Epic 1: Cryptographic Authentication & Setup
 
 Users can authenticate using their private key and gain secure access to the system. Zero-friction Web3-native identity without traditional account creation.
 
-### Story 2.1: Private Key Input Methods
+### Story 1.1: Private Key Input Methods
 
 As a user,
 I want to provide my private key through multiple convenient methods,
@@ -204,7 +175,7 @@ So that I can easily authenticate regardless of how I store my key.
 **Then** the key is displayed in the input field
 **And** real-time validation provides feedback on the key format
 
-### Story 2.2: Private Key Generation
+### Story 1.2: Private Key Generation
 
 As a new user,
 I want to generate a new private key pair directly in the application,
@@ -228,7 +199,7 @@ So that I can start using the application immediately without needing an existin
 **Then** the public key is extracted and used for authentication
 **And** the key pair is available for future use
 
-### Story 2.3: Private Key Validation and Public Key Extraction
+### Story 1.3: Private Key Validation and Public Key Extraction
 
 As a user,
 I want to have my private key validated and the public key automatically extracted,
@@ -251,7 +222,7 @@ So that I can be confident my key is valid before proceeding to authentication.
 **Then** the public key is in the correct format for use as my account identifier
 **And** I can proceed to authentication with this public key
 
-### Story 2.4: Authentication Flow and Access
+### Story 1.4: Authentication Flow and Access
 
 As a user,
 I want to authenticate using my private key and gain access to the application,
@@ -276,7 +247,7 @@ So that I can use the cryptographic chat without creating a traditional account.
 **And** my public key serves as my unique account identifier
 **And** I can see my identity in the system
 
-### Story 2.5: Private Key Management and Backup
+### Story 1.5: Private Key Management and Backup
 
 As a user,
 I want to export, backup, and copy my private key for secure storage,
